@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 4%;
+    --foreground: 0 0% 98%;
+    --card: 220 15% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 15% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 187 100% 50%;
+    --primary-foreground: 220 20% 4%;
+    --secondary: 220 15% 12%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 187 100% 50%;
+    --accent-foreground: 220 20% 4%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 15%;
+    --input: 220 15% 15%;
+    --ring: 187 100% 50%;
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-xl bg-white/[0.03] border border-white/10;
+  }
+  
+  .glass-panel-strong {
+    @apply backdrop-blur-2xl bg-white/[0.08] border border-white/20;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-lg bg-gradient-to-br from-white/[0.1] to-white/[0.02] border border-white/10 rounded-2xl;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400;
+  }
+  
+  .text-gradient-glow {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-300;
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+  }
+  
+  .glow-border {
+    @apply relative;
+  }
+  
+  .glow-border::before {
+    content: '';
+    @apply absolute inset-0 rounded-inherit;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), transparent, rgba(0, 212, 255, 0.1));
+    z-index: -1;
+    filter: blur(8px);
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-xl
+           hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-glow hover:shadow-glow-lg
+           active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 glass-panel text-white font-semibold rounded-xl
+           hover:bg-white/10 transition-all duration-300 border border-white/20
+           active:scale-95;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white
+           placeholder:text-white/40 focus:outline-none focus:border-cyan-500/50 
+           focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300;
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+  
+  .gradient-border {
+    position: relative;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 0, 0, 0.8));
+  }
+  
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.5), transparent, rgba(0, 212, 255, 0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+  
+  .animate-delay-700 {
+    animation-delay: 700ms;
+  }
+  
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.5);
+}
+
+/* Selection */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: white;
+}
